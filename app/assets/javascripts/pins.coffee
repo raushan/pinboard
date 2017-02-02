@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-	$ ->
-    	$('#pins').imagesLoaded ->
-      	$('#pins').masonry
-	      	itemSelector: '.box'
-	      	isFitWidth: true
+  $ ->
+      $('#pins').imagesLoaded ->
+        $('#pins').masonry
+          itemSelector: '.box'
+          isFitWidth: true
 
 
 

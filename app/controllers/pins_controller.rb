@@ -10,14 +10,17 @@ class PinsController < ApplicationController
   end
 
   def edit
+    return not_authorized unless current_user == @pin.user
   end
 
   def destroy
+    return not_authorized unless current_user == @pin.user
   	@pin.destroy
   	redirect_to root_path, notice: "Pin destroyed"
   end
 
   def update
+    return not_authorized unless current_user == @pin.user
   	if @pin.update(pin_params)
   		redirect_to @pin, notice: "Pin updated"
   	else
@@ -52,5 +55,9 @@ class PinsController < ApplicationController
 
   def find_pin
   	@pin = Pin.find(params[:id])
+  end
+
+  def not_authorized
+    redirect_to pins_path, notice: "Denied"
   end
 end
